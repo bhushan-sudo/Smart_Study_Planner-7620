@@ -1,0 +1,1301 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner - Dashboard</title>
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Alabaster and Rosy Brown Palette */
+            --primary: #bc8f8f;
+            /* Rosy Brown */
+            --primary-dark: #8b7355;
+            /* Deep Taupe */
+            --primary-light: #d4a5a5;
+            /* Dusty Rose */
+            --secondary: #a0826d;
+            /* Warm Taupe */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --purple: #bc8f8f;
+
+            /* Warm Foundation */
+            --alabaster: #f0ebe5;
+            --soft-cream: #faf8f5;
+            --warm-charcoal: #3e3e3e;
+            --deep-taupe: #8b7355;
+            --dusty-rose: #d4a5a5;
+            --glow: rgba(188, 143, 143, 0.2);
+
+            /* Backgrounds */
+            --bg-primary: #faf8f5;
+            --bg-secondary: #f0ebe5;
+            --bg-tertiary: #e8e0d5;
+            --bg-card: rgba(240, 235, 229, 0.95);
+            --bg-hover: rgba(212, 165, 165, 0.15);
+
+            /* Text */
+            --text-primary: #3e3e3e;
+            --text-secondary: #6b5d52;
+            --text-muted: #8b7d72;
+
+            /* Borders & Shadows */
+            --border-color: rgba(139, 115, 85, 0.15);
+            --shadow-sm: 0 1px 2px 0 rgba(62, 62, 62, 0.08);
+            --shadow-md: 0 4px 6px -1px rgba(62, 62, 62, 0.12);
+            --shadow-lg: 0 10px 15px -3px rgba(62, 62, 62, 0.15);
+            --shadow-xl: 0 20px 25px -5px rgba(62, 62, 62, 0.18);
+
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+
+            /* Transitions */
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe5 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(250, 248, 245, 0.95);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px;
+            box-shadow: 0 4px 30px rgba(62, 62, 62, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo i {
+            font-size: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            box-shadow: 0 0 10px var(--glow);
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 12px rgba(188, 143, 143, 0.3);
+            border: 1px solid var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-hover);
+            border-color: var(--primary);
+        }
+
+        .btn-sm {
+            padding: 8px 14px;
+            font-size: 13px;
+        }
+
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
+        }
+
+        .icon-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-icon::before {
+            opacity: 1;
+        }
+
+        .stat-icon.orange {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+            color: white;
+        }
+
+        .stat-icon.cyan {
+            background: linear-gradient(135deg, #22d3ee, #06b6d4);
+            color: white;
+        }
+
+        .stat-icon.blue {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            color: white;
+        }
+
+        .stat-icon.purple {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Section */
+        .section {
+            background: var(--bg-card);
+            -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-primary);
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* Subject Cards */
+        .subjects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .subject-card {
+            background: linear-gradient(135deg, rgba(240, 235, 229, 0.9), rgba(232, 224, 213, 0.95));
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            border-left: 4px solid var(--primary);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .subject-card:hover {
+            transform: translateX(4px);
+            border-color: var(--primary-dark);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .subject-card.color-red {
+            border-left-color: #ef4444;
+        }
+
+        .subject-card.color-cyan {
+            border-left-color: #06b6d4;
+        }
+
+        .subject-card.color-orange {
+            border-left-color: #f97316;
+        }
+
+        .subject-card.color-purple {
+            border-left-color: #8b5cf6;
+        }
+
+        .subject-card.color-green {
+            border-left-color: #10b981;
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: start;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .subject-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .subject-info {
+            flex: 1;
+        }
+
+        .subject-name {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .subject-badges {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.hard {
+            background: linear-gradient(135deg, #fecaca, #fca5a5);
+            color: #991b1b;
+        }
+
+        .badge.easy {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+        }
+
+        .badge.medium {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+        }
+
+        .badge.due {
+            background: linear-gradient(135deg, #fed7aa, #fdba74);
+            color: #9a3412;
+        }
+
+        .badge.success {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #065f46;
+        }
+
+        .subject-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .subject-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: var(--bg-secondary);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 14px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), #34d399);
+            border-radius: 5px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .chapter-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chapter-controls .btn {
+            flex: 1;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-secondary);
+        }
+
+        .empty-state i {
+            font-size: 56px;
+            margin-bottom: 20px;
+            opacity: 0.4;
+            background: linear-gradient(135deg, var(--gold), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .empty-state p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 248, 245, 0.98);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 14px;
+            z-index: 100;
+            box-shadow: 0 -4px 30px rgba(62, 62, 62, 0.08);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: var(--transition-fast);
+            border-radius: var(--radius-sm);
+            position: relative;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 0 0 3px 3px;
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .nav-item.active::before {
+            opacity: 1;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        .nav-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-item i {
+            font-size: 22px;
+            transition: var(--transition-fast);
+        }
+
+        .nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .nav-item span {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 48px;
+            color: var(--text-secondary);
+        }
+
+        .loading i {
+            font-size: 40px;
+            animation: spin 1s linear infinite;
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+            color: var(--text-primary);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px -12px rgba(62, 62, 62, 0.3);
+            animation: slideUp 0.3s ease-out;
+            color: var(--text-primary);
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .modal-content form {
+            padding: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .color-picker {
+            display: flex;
+            gap: 12px;
+        }
+
+        .color-picker input[type="radio"] {
+            display: none;
+        }
+
+        .color-picker label {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: var(--transition-fast);
+        }
+
+        .color-picker input[type="radio"]:checked+label {
+            border-color: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        /* Calendar Styles */
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+
+        .calendar-day-header {
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-secondary);
+            padding: 8px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-sm);
+            padding: 8px;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            position: relative;
+            color: var(--text-primary);
+        }
+
+        .calendar-day:hover {
+            background: var(--bg-hover);
+            border-color: var(--primary);
+        }
+
+        .calendar-day.today {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+
+        /* Timer Styles */
+        .timer-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .timer-display {
+            font-size: 72px;
+            font-weight: 800;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--zinc-100), var(--zinc-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .timer-label {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .timer-progress-ring {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 0%, var(--bg-secondary) 0%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .timer-progress-ring::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+        }
+
+        /* Chart Containers */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin: 20px 0;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section {
+                padding: 18px;
+            }
+
+            .subject-card {
+                padding: 16px;
+            }
+
+            .timer-display {
+                font-size: 56px;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .user-name {
+                display: none;
+            }
+
+            .timer-display {
+                font-size: 48px;
+            }
+        }
+    </style>
+
+    <!-- Dashboard Enhancement Styles -->
+    <link rel="stylesheet" href="css/dashboard-enhancements.css">
+    <link rel="stylesheet" href="css/pomodoro.css">
+    <link rel="stylesheet" href="css/analytics.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Study Planner</span>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">U</div>
+                <span id="userNameDisplay" class="user-name"></span>
+                <button class="icon-btn" onclick="logout()" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Tab -->
+        <div class="tab-content active" id="homeTab">
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-value" id="subjectsCount">0</div>
+                    <div class="stat-label">Subjects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="stat-value" id="sessionsCount">0</div>
+                    <div class="stat-label">Sessions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon cyan">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-value" id="studyTime">0.0h</div>
+                    <div class="stat-label">This Week</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-value" id="progressPercent">0%</div>
+                    <div class="stat-label">Progress</div>
+                </div>
+            </div>
+
+            <!-- Today's Plan -->
+            <div class="section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <i class="far fa-calendar-check"></i>
+                        Today's Plan
+                    </h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn btn-secondary btn-sm" id="generatePlanBtn" onclick="generateTodaysPlan()">
+                            <i class="fas fa-magic"></i> Generate Plan
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="startScheduleBtn" onclick="startSchedule()"
+                            style="display: none;">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                    </div>
+                </div>
+                <div id="planDisplay" class="empty-state">
+                    <i class="far fa-calendar-alt"></i>
+                    <p>No study plan for today. Click "Generate Plan" to start.</p>
+                </div>
+
+                <!-- Notepad Area -->
+                <div id="notepadArea" style="margin-top: 20px; display: none;">
+                    <div class="section-header" style="margin-bottom: 10px;">
+                        <h3 style="font-size: 16px; color: var(--text-primary);"><i class="fas fa-sticky-note"></i>
+                            Quick Notes</h3>
+                        <button class="btn btn-sm btn-secondary" onclick="saveNotepad()">Save</button>
+                    </div>
+                    <textarea id="studyNotepad"
+                        style="width: 100%; height: 150px; padding: 15px; border-radius: var(--radius-md); border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary); font-family: inherit; resize: vertical;"
+                        placeholder="Write your study notes here..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subjects Tab -->
+        <div class="tab-content" id="subjectsTab">
+            <div class="section-header" style="margin-bottom: 24px;">
+                <div>
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i>
+                        Subjects
+                    </h2>
+                    <p class="subtitle"><span id="subjectCountText">0</span> subjects added</p>
+                </div>
+                <button class="btn btn-primary" onclick="showAddSubjectModal()">
+                    <i class="fas fa-plus"></i> Add Subject
+                </button>
+            </div>
+
+            <div class="subjects-list" id="subjectsList">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                    <p style="margin-top: 12px;">Loading subjects...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Tab -->
+        <div class="tab-content" id="planTab">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-calendar-alt"></i>
+                    Study Calendar
+                </h2>
+                <div class="empty-state">
+                    <i class="far fa-calendar"></i>
+                    <p>Calendar view coming soon</p>
+                    <p style="font-size: 13px; margin-top: 8px;">Plan your study schedule with our interactive calendar
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timer Tab -->
+        <div class="tab-content" id="timerTab">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-stopwatch"></i>
+                    Focus Timer
+                </h2>
+                <div class="empty-state">
+                    <i class="fas fa-hourglass-half"></i>
+                    <p>Pomodoro timer coming soon</p>
+                    <p style="font-size: 13px; margin-top: 8px;">Stay focused with 25-minute study sessions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tab -->
+        <div class="tab-content" id="progressTab">
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="fas fa-chart-pie"></i>
+                    Analytics & Progress
+                </h2>
+                <div class="empty-state">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Analytics charts coming soon</p>
+                    <p style="font-size: 13px; margin-top: 8px;">Track your study progress and performance</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-tab="home">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </button>
+        <button class="nav-item" data-tab="subjects">
+            <i class="fas fa-book"></i>
+            <span>Subjects</span>
+        </button>
+        <button class="nav-item" data-tab="plan">
+            <i class="fas fa-calendar"></i>
+            <span>Plan</span>
+        </button>
+        <button class="nav-item" data-tab="timer">
+            <i class="fas fa-clock"></i>
+            <span>Timer</span>
+        </button>
+        <button class="nav-item" data-tab="progress">
+            <i class="fas fa-chart-bar"></i>
+            <span>Progress</span>
+        </button>
+    </nav>
+
+    <!-- Modals -->
+
+    <!-- Add Subject Modal -->
+    <div class="modal" id="addSubjectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Subject</h3>
+                <button class="icon-btn" onclick="closeAddSubjectModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="addSubjectForm" onsubmit="handleAddSubjects(event)">
+                <div id="subjectInputContainer">
+                    <div class="subject-entry-group"
+                        style="padding: 15px; background: var(--bg-tertiary); border-radius: var(--radius-md); margin-bottom: 15px;">
+                        <div class="form-group">
+                            <label>Subject Name</label>
+                            <input type="text" name="subject_name[]" required placeholder="e.g., Mathematics">
+                        </div>
+                        <div class="form-group">
+                            <label>Chapters / Lessons (Separate by comma)</label>
+                            <textarea name="chapters[]" placeholder="e.g., Algebra, Geometry, Calculus"
+                                style="width: 100%; height: 60px; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <select name="priority[]" required>
+                                <option value="1">Low</option>
+                                <option value="2" selected>Medium</option>
+                                <option value="3">High</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-sm btn-secondary" onclick="addSubjectInputField()"
+                    style="margin-bottom: 20px;">
+                    <i class="fas fa-plus"></i> Add Another Subject
+                </button>
+                <div class="form-group">
+                    <label>Color</label>
+                    <div class="color-picker">
+                        <input type="radio" name="color" value="#3B82F6" id="color1" checked>
+                        <label for="color1" style="background: #3B82F6"></label>
+
+                        <input type="radio" name="color" value="#EF4444" id="color2">
+                        <label for="color2" style="background: #EF4444"></label>
+
+                        <input type="radio" name="color" value="#10B981" id="color3">
+                        <label for="color3" style="background: #10B981"></label>
+
+                        <input type="radio" name="color" value="#F59E0B" id="color4">
+                        <label for="color4" style="background: #F59E0B"></label>
+
+                        <input type="radio" name="color" value="#8B5CF6" id="color5">
+                        <label for="color5" style="background: #8B5CF6"></label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddSubjectModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Subject</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Subject Modal -->
+    <div class="modal" id="editSubjectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Subject</h3>
+                <button class="icon-btn" onclick="closeEditSubjectModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editSubjectForm" onsubmit="handleEditSubject(event)">
+                <input type="hidden" id="editSubjectId">
+                <div class="form-group">
+                    <label>Subject Name</label>
+                    <input type="text" id="editSubjectName" required>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="editSubjectPriority" required>
+                        <option value="1">Low</option>
+                        <option value="2">Medium</option>
+                        <option value="3">High</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditSubjectModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <!-- Dashboard Enhancement Scripts -->
+    <script src="js/dashboard.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/pomodoro.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/profile.js"></script>
+
+    <!-- AI Agent Chat -->
+    <link rel="stylesheet" href="css/agent-chat.css">
+    <script src="js/agent-chat.js"></script>
+
+</body>
+
+</html>
