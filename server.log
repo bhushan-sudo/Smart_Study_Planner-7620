@@ -1,0 +1,48 @@
+INFO:database:PostgreSQL connection pool initialized successfully
+INFO:__main__:Starting Smart Study Planner API
+INFO:__main__:Database: postgres at postgresql://postgres:Wd4JHW8CHQI2GF7H@db.lgoubzoynoikabayvwkn.supabase.co:5432/postgres:5432
+INFO:database:PostgreSQL version: PostgreSQL 17.6 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+INFO:__main__:Database connection successful
+ * Serving Flask app 'main'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.87.224.5:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:database:PostgreSQL connection pool initialized successfully
+INFO:__main__:Starting Smart Study Planner API
+INFO:__main__:Database: postgres at postgresql://postgres:Wd4JHW8CHQI2GF7H@db.lgoubzoynoikabayvwkn.supabase.co:5432/postgres:5432
+INFO:database:PostgreSQL version: PostgreSQL 17.6 on aarch64-unknown-linux-gnu, compiled by gcc (GCC) 13.2.0, 64-bit
+INFO:__main__:Database connection successful
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 140-468-901
+ERROR:__main__:Registration error: 400 Bad Request: Failed to decode JSON object: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:36:48] "[35m[1mPOST /api/auth/register HTTP/1.1[0m" 500 -
+C:\study planner\backend\main.py:87: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  'exp': datetime.utcnow() + timedelta(days=7)
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:38:06] "[35m[1mPOST /api/auth/register HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:38:29] "POST /api/auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:03] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:07] "[35m[1mPOST /api/auth/register HTTP/1.1[0m" 201 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:09] "GET /api/users/3/tasks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:16] "GET /api/analytics/overview HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:18] "GET /api/goals HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:22] "GET /api/streaks HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:25] "GET /api/users/3/planner/schedule HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:28] "GET /api/users/3/planner/recommendations HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:31] "GET /api/users/3/planner/workload HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:39:33] "GET /api/notifications HTTP/1.1" 200 -
+ERROR:__main__:Login error: Invalid salt
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:40:49] "[35m[1mPOST /api/auth/login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:43:36] "[31m[1mPOST /api/auth/login HTTP/1.1[0m" 401 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:43:58] "POST /api/auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:46:13] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:48:25] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:48:25] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:51:07] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:52:43] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:53:13] "OPTIONS /api/auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [27/Jan/2026 08:53:16] "OPTIONS /api/auth/register HTTP/1.1" 200 -
+^C
